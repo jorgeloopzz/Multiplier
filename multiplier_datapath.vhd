@@ -84,7 +84,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 			end if;
 		END PROCESS;
 
-		-- p <= ph & pl;
+		p <= m1 & m2;
 
 		-- p_out <= STD_LOGIC_VECTOR(p);
 		
