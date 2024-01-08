@@ -94,8 +94,9 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 				salida => p
 			);
 
-		p <= m1 & m2;
-
-		-- p_out <= STD_LOGIC_VECTOR(p);
+		--
+		-- Asigno el valor de la salida
+		--
+		p_out <= STD_LOGIC_VECTOR(p);
 		
 END trabajo;
