@@ -74,15 +74,8 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		--
 		-- MULTIPLEXORES
 		--
-		PROCESS(inicio, Y, salida_ALU, pl) BEGIN
-			if inicio = '1' then
-				m1 <= (OTHERS => '0');
-				m2 <= Y;
-			else
-				m1 <= salida_ALU(3 downto 0);
-				m2 <= salida_ALU(4) & pl(2 downto 0);
-			end if;
-		END PROCESS;
+		m1 <= (OTHERS => '0') WHEN inicio = '1' ELSE salida_ALU(3 downto 0);
+		m2 <= Y WHEN inicio = '1' ELSE salida_ALU(4) & pl(2 downto 0);
 
 		p <= m1 & m2;
 
