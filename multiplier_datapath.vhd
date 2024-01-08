@@ -44,14 +44,14 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	-- SEÑALES
 	SIGNAL X: UNSIGNED (3 DOWNTO 0);
 	SIGNAL Y: UNSIGNED (3 DOWNTO 0);
-	SIGNAL ph: UNSIGNED (3 DOWNTO 0); -- Inicialmente se inicializa a 0 y después la parte alta de la salida
-	SIGNAL pl: UNSIGNED (3 DOWNTO 0);	-- Inicialmente se inicializa con el valor de y_in y después la parte baja de la salida
-	SIGNAL p: UNSIGNED (7 DOWNTO 0);	-- Unen ambos números
+	SIGNAL ph: UNSIGNED (3 DOWNTO 0);			-- Inicialmente se inicializa a 0 y después la parte alta de la salida
+	SIGNAL pl: UNSIGNED (3 DOWNTO 0);			-- Inicialmente se inicializa con el valor de "y_in" y después la parte baja de la salida
 	SIGNAL LSB: STD_LOGIC;
 	SIGNAL salida_ALU: UNSIGNED (4 DOWNTO 0);	-- Almacena la salida de la ALU
 
-	SIGNAL m1: UNSIGNED (3 downto 0); -- Salida del primer multiplexor
-	SIGNAL m2: UNSIGNED (3 downto 0); -- Salida del segundo multiplexor
+	SIGNAL m1: UNSIGNED (3 downto 0);			-- Salida del primer multiplexor que almacenará la parte alta
+	SIGNAL m2: UNSIGNED (3 downto 0);			-- Salida del segundo multiplexor que almacenará la parte baja
+	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
 
 	BEGIN
 		Y <= UNSIGNED(y_in);
