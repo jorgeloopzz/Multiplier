@@ -58,18 +58,12 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		Y <= UNSIGNED(y_in);
 		ph <= (OTHERS => '0') WHEN inicio = '1' else p(7 downto 4);
 		pl <= UNSIGNED(y_in) WHEN inicio = '1' else p(3 downto 0);
+		LSB <= pl(0);
 
 		--
 		-- ALU
 		--
-		LSB <= pl(0);
-		
-		PROCESS(ph, X, LSB) BEGIN
-			CASE LSB IS
-				WHEN '0' => salida_ALU <= '0' & ph;
-				WHEN OTHERS => salida_ALU <= '0' & (ph + X);
-			END CASE;
-		END PROCESS;
+		salida_ALU <= '0'& ph WHEN LSB = '0' ELSE '0' & (ph + X);
 
 		--
 		-- MULTIPLEXORES
