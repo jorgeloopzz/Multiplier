@@ -54,11 +54,22 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	SIGNAL m2: UNSIGNED (3 downto 0); -- Salida del segundo multiplexor
 
 	BEGIN
-		X <= UNSIGNED(x_in);
 		Y <= UNSIGNED(y_in);
 		ph <= (OTHERS => '0') WHEN inicio = '1' else p(7 downto 4);
 		pl <= UNSIGNED(y_in) WHEN inicio = '1' else p(3 downto 0);
 		LSB <= pl(0);
+
+		--
+		-- Registro que almacena 'x_in'
+		--
+		registro_x: registro_enable
+			PORT MAP(
+				rstn => reset_n,
+				clk => clock,
+				enable => enable,
+				entrada => UNSIGNED(x_in),
+				salida => X
+			);
 
 		--
 		-- ALU
