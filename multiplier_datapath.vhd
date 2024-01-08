@@ -82,6 +82,18 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		m1 <= (OTHERS => '0') WHEN inicio = '1' ELSE salida_ALU(3 downto 0);
 		m2 <= Y WHEN inicio = '1' ELSE salida_ALU(4) & pl(2 downto 0);
 
+		--
+		-- Registro que almacena m1 & m2
+		--
+		registro_p: registro_enable
+			PORT MAP(
+				rstn => reset_n,
+				clk => clock,
+				enable => enable,
+				entrada => m1 & m2,
+				salida => p
+			);
+
 		p <= m1 & m2;
 
 		-- p_out <= STD_LOGIC_VECTOR(p);
