@@ -42,7 +42,9 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	END COMPONENT;
 	
 	-- SEÑALES
-	SIGNAL X: UNSIGNED (3 DOWNTO 0);
+	SIGNAL tierra: UNSIGNED (3 DOWNTO 0);		-- Se asignará "0000" para añadir los bits necesarios para llegar a los 8 del registro
+	SIGNAL X_n: UNSIGNED (3 DOWNTO 0);			-- Guardará el valor de "x_in"
+	SIGNAL X: UNSIGNED (7 DOWNTO 0);
 	SIGNAL Y: UNSIGNED (3 DOWNTO 0);
 	SIGNAL ph: UNSIGNED (3 DOWNTO 0);			-- Inicialmente se inicializa a 0 y después la parte alta de la salida
 	SIGNAL pl: UNSIGNED (3 DOWNTO 0);			-- Inicialmente se inicializa con el valor de "y_in" y después la parte baja de la salida
@@ -56,6 +58,8 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	SIGNAL fin: STD_LOGIC;						-- Se conectará al rco del contador y su valor se le asigna a la salida "done"
 
 	BEGIN
+		tierra <= (OTHERS => '0');
+		X_n <= X(3 DOWNTO 0);
 		Y <= UNSIGNED(y_in);
 		ph <= (OTHERS => '0') WHEN inicio = '1' else p(7 downto 4);
 		pl <= UNSIGNED(y_in) WHEN inicio = '1' else p(3 downto 0);
@@ -69,20 +73,20 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 				rstn => reset_n,
 				clk => clock,
 				enable => enable,
-				entrada => UNSIGNED(x_in),
+				entrada => tierra & UNSIGNED(x_in),
 				salida => X
 			);
 
 		--
 		-- ALU
 		--
-		salida_ALU <= '0'& ph WHEN LSB = '0' ELSE '0' & (ph + X);
+		salida_ALU <= '0' & ph WHEN LSB = '0' ELSE '0' & (ph + X_n);
 
 		--
 		-- MULTIPLEXORES
 		--
 		m1 <= (OTHERS => '0') WHEN inicio = '1' ELSE salida_ALU(4 downto 1);
-		m2 <= Y WHEN inicio = '1' ELSE salida_ALU(0) & pl(2 downto 0);
+		m2 <= UNSIGNED(y_in) WHEN inicio = '1' ELSE salida_ALU(0) & pl(3 downto 1);
 
 		--
 		-- Registro que almacena m1 & m2
@@ -109,9 +113,9 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 				reset_n => reset_n,
 				clock => clock,
 				enable => enable,
-				fin_cuenta => fin
+				fin_cuenta => done
 			);
 
-		done <= fin;
+		-- done <= fin;
 		
 END trabajo;
