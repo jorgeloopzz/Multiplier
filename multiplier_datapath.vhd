@@ -81,8 +81,8 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		--
 		-- MULTIPLEXORES
 		--
-		m1 <= (OTHERS => '0') WHEN inicio = '1' ELSE salida_ALU(3 downto 0);
-		m2 <= Y WHEN inicio = '1' ELSE salida_ALU(4) & pl(2 downto 0);
+		m1 <= (OTHERS => '0') WHEN inicio = '1' ELSE salida_ALU(4 downto 1);
+		m2 <= Y WHEN inicio = '1' ELSE salida_ALU(0) & pl(2 downto 0);
 
 		--
 		-- Registro que almacena m1 & m2
