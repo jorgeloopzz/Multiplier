@@ -55,8 +55,6 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	SIGNAL m2: UNSIGNED (3 downto 0);			-- Salida del segundo multiplexor que almacenará la parte baja
 	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
 
-	SIGNAL fin: STD_LOGIC;						-- Se conectará al rco del contador y su valor se le asigna a la salida "done"
-
 	BEGIN
 		tierra <= (OTHERS => '0');
 		X_n <= X(3 DOWNTO 0);
@@ -116,6 +114,4 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 				fin_cuenta => done
 			);
 
-		-- done <= fin;
-		
 END trabajo;
