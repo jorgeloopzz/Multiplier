@@ -72,7 +72,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 			PORT MAP(
 				rstn => reset_n,
 				clk => clock,
-				enable => enable,
+				enable => inicio,
 				entrada => tierra & UNSIGNED(x_in),
 				salida => X
 			);
