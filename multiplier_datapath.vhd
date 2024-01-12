@@ -42,9 +42,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	END COMPONENT;
 	
 	-- SEÑALES
-	SIGNAL tierra: UNSIGNED (3 DOWNTO 0);		-- Se asignará "0000" para añadir los bits necesarios para llegar a los 8 del registro
-	SIGNAL X_n: UNSIGNED (3 DOWNTO 0);			-- Guardará el valor de "x_in"
-	SIGNAL X: UNSIGNED (7 DOWNTO 0);
+	SIGNAL X: UNSIGNED (3 DOWNTO 0);
 	SIGNAL Y: UNSIGNED (3 DOWNTO 0);
 	SIGNAL ph: UNSIGNED (3 DOWNTO 0);			-- Inicialmente se inicializa a 0 y después la parte alta de la salida
 	SIGNAL pl: UNSIGNED (3 DOWNTO 0);			-- Inicialmente se inicializa con el valor de "y_in" y después la parte baja de la salida
@@ -56,8 +54,6 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
 
 	BEGIN
-		tierra <= (OTHERS => '0');
-		X_n <= X(3 DOWNTO 0);
 		Y <= UNSIGNED(y_in);
 		ph <= (OTHERS => '0') WHEN inicio = '1' else p(7 downto 4);
 		pl <= UNSIGNED(y_in) WHEN inicio = '1' else p(3 downto 0);
@@ -67,18 +63,19 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		-- Registro que almacena 'x_in'
 		--
 		registro_x: registro_enable
+			GENERIC MAP (n => 4)
 			PORT MAP(
 				rstn => reset_n,
 				clk => clock,
 				enable => inicio,
-				entrada => tierra & UNSIGNED(x_in),
+				entrada => UNSIGNED(x_in),
 				salida => X
 			);
 
 		--
 		-- ALU
 		--
-		salida_ALU <= '0' & ph WHEN LSB = '0' ELSE '0' & (ph + X_n);
+		salida_ALU <= '0' & ph WHEN LSB = '0' ELSE '0' & (ph + X);
 
 		--
 		-- MULTIPLEXORES
