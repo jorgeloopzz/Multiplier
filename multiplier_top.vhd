@@ -50,16 +50,16 @@ ARCHITECTURE top OF multiplier_top IS
           clock      : IN  STD_LOGIC );
       END COMPONENT;
 
-      SIGNAL inicio, enable, done, ready : STD_LOGIC;
+      SIGNAL inicio_s, enable_s, done_s : STD_LOGIC;
 
       begin
         control: multiplier_control
           PORT MAP(
             start => start_in,
-            done => done,
+            done => done_s,
             ready => done_out,
-            inicio => inicio,
-            enable => enable,
+            inicio => inicio_s,
+            enable => enable_s,
             reset_n => reset_n,
             clock => clock
           );
@@ -68,9 +68,9 @@ ARCHITECTURE top OF multiplier_top IS
           PORT MAP(
             x_in => x_in,
             y_in => y_in,
-            inicio => inicio,
-            enable => enable,
-            done => done,
+            inicio => inicio_s,
+            enable => enable_s,
+            done => done_s,
             p_out => product_out,
             reset_n => reset_n,
             clock => clock
