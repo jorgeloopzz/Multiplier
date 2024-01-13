@@ -87,6 +87,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		-- Registro que almacena m1 & m2
 		--
 		registro_p: registro_enable
+        	GENERIC MAP (n => 8)
 			PORT MAP(
 				rstn => reset_n,
 				clk => clock,
