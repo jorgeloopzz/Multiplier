@@ -51,10 +51,10 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 
 	SIGNAL m1: UNSIGNED (3 downto 0);			-- Salida del primer multiplexor que almacenará la parte alta
 	SIGNAL m2: UNSIGNED (3 downto 0);			-- Salida del segundo multiplexor que almacenará la parte baja
+	SIGNAL union: UNSIGNED (7 downto 0);
 	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
 
 	BEGIN
-		Y <= UNSIGNED(y_in);
 		ph <= (OTHERS => '0') WHEN inicio = '1' else p(7 downto 4);
 		pl <= UNSIGNED(y_in) WHEN inicio = '1' else p(3 downto 0);
 		LSB <= pl(0);
@@ -82,6 +82,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		--
 		m1 <= (OTHERS => '0') WHEN inicio = '1' ELSE salida_ALU(4 downto 1);
 		m2 <= UNSIGNED(y_in) WHEN inicio = '1' ELSE salida_ALU(0) & pl(3 downto 1);
+		union <= m1 & m2;
 
 		--
 		-- Registro que almacena m1 & m2
@@ -92,14 +93,22 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 				rstn => reset_n,
 				clk => clock,
 				enable => enable,
-				entrada => m1 & m2,
+				entrada => union,
 				salida => p
 			);
 
 		--
 		-- Asigno el valor de la salida
 		--
-		p_out <= STD_LOGIC_VECTOR(p);
+		-- p_out <= STD_LOGIC_VECTOR(p);
+		PROCESS(reset_n, clock)
+			BEGIN
+			  IF (reset_n = '0') THEN
+					p_out <= (OTHERS=>'0');
+			  ELSIF RISING_EDGE(clock) THEN
+			    	p_out <= STD_LOGIC_VECTOR(p);
+		    END IF;
+		END PROCESS;
 
 		--
 		-- Contador que controla los 4 pasos para multiplicar
