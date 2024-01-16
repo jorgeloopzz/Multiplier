@@ -107,7 +107,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 					p_out <= (OTHERS=>'0');
 				ELSIF RISING_EDGE(clock) THEN
 			    	p_out <= STD_LOGIC_VECTOR(p);
-		    	ND IF;
+		    	END IF;
 		END PROCESS;
 
 		--
