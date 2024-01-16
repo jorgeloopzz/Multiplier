@@ -3,8 +3,8 @@
 --Datapath del multiplicador
 
 LIBRARY ieee;
-  USE ieee.std_logic_1164.all;
-  USE ieee.numeric_std.all;
+  USE ieee.std_logic_1164.ALL;
+  USE ieee.numeric_std.ALL;
   USE work.ALL;
 
 ENTITY multiplier_datapath IS
@@ -49,14 +49,14 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	SIGNAL LSB: STD_LOGIC;
 	SIGNAL salida_ALU: UNSIGNED (4 DOWNTO 0);	-- Almacena la salida de la ALU
 
-	SIGNAL m1: UNSIGNED (3 downto 0);			-- Salida del primer multiplexor que almacenará la parte alta
-	SIGNAL m2: UNSIGNED (3 downto 0);			-- Salida del segundo multiplexor que almacenará la parte baja
-	SIGNAL union: UNSIGNED (7 downto 0);
+	SIGNAL m1: UNSIGNED (3 DOWNTO 0);			-- Salida del primer multiplexor que almacenará la parte alta
+	SIGNAL m2: UNSIGNED (3 DOWNTO 0);			-- Salida del segundo multiplexor que almacenará la parte baja
+	SIGNAL union: UNSIGNED (7 DOWNTO 0);
 	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
 
 	BEGIN
-		ph <= (OTHERS => '0') WHEN inicio = '1' else p(7 downto 4);
-		pl <= UNSIGNED(y_in) WHEN inicio = '1' else p(3 downto 0);
+		ph <= (OTHERS => '0') WHEN inicio = '1' ELSE p(7 DOWNTO 4);
+		pl <= UNSIGNED(y_in) WHEN inicio = '1' ELSE p(3 DOWNTO 0);
 		LSB <= pl(0);
 
 		--
@@ -80,8 +80,8 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		--
 		-- MULTIPLEXORES
 		--
-		m1 <= (OTHERS => '0') WHEN inicio = '1' ELSE salida_ALU(4 downto 1);
-		m2 <= UNSIGNED(y_in) WHEN inicio = '1' ELSE salida_ALU(0) & pl(3 downto 1);
+		m1 <= (OTHERS => '0') WHEN inicio = '1' ELSE salida_ALU(4 DOWNTO 1);
+		m2 <= UNSIGNED(y_in) WHEN inicio = '1' ELSE salida_ALU(0) & pl(3 DOWNTO 1);
 		union <= m1 & m2;
 
 		--
@@ -103,11 +103,11 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		-- p_out <= STD_LOGIC_VECTOR(p);
 		PROCESS(reset_n, clock)
 			BEGIN
-			  IF (reset_n = '0') THEN
+				IF (reset_n = '0') THEN
 					p_out <= (OTHERS=>'0');
-			  ELSIF RISING_EDGE(clock) THEN
+				ELSIF RISING_EDGE(clock) THEN
 			    	p_out <= STD_LOGIC_VECTOR(p);
-		    END IF;
+		    	ND IF;
 		END PROCESS;
 
 		--
