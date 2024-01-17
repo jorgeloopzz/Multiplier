@@ -10,17 +10,18 @@ entity multiplier_tb is
 end multiplier_tb;
 
 architecture tb of multiplier_tb is
-  component multiplier
-    generic(n : INTEGER := 4;  -- number of bits in operands
-            m : INTEGER := 2); 
-    port (start_in : in  std_logic;
-          x_in     : in  std_logic_vector (3 downto 0);
-          y_in     : in  std_logic_vector (3 downto 0);
-          clock    : in  std_logic;
-          p_out    : out std_logic_vector (7 downto 0);
-          done_out : out std_logic;
-          reset_n  : in  std_logic);
-  end component;
+  component multiplier_top
+
+  PORT (
+        x_in        : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
+        y_in        : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
+        start_in    : IN  STD_LOGIC;
+        product_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+        done_out    : OUT STD_LOGIC;
+        reset_n     : IN  STD_LOGIC ;
+        clock       : IN  STD_LOGIC);
+END component;
+
   signal start_in   : std_logic;
   signal x_in       : std_logic_vector (3 downto 0);
   signal y_in       : std_logic_vector (3 downto 0);
@@ -32,15 +33,16 @@ architecture tb of multiplier_tb is
   signal TbSimEnded : std_logic := '0';
   constant TbPeriod : time := 40 ns; 
 begin
-  dut : multiplier
-    generic map (4, 2)
-    port map (start_in => start_in,
-              x_in     => x_in,
-              y_in     => y_in,
-              clock    => clock,
-              p_out    => p_out,
-              done_out => done_out,
-              reset_n  => reset_n);
+  top : multiplier_top
+    port map (
+    		clock    => clock,
+    		x_in     => x_in,
+            y_in     => y_in,
+    		start_in => start_in,    
+            product_out    => p_out,
+            done_out => done_out,
+            reset_n  => reset_n);
+  
   TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
   clock <= TbClock;
   stimuli : process
