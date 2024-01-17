@@ -53,11 +53,14 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	SIGNAL m2: UNSIGNED (3 DOWNTO 0);			-- Salida del segundo multiplexor que almacenará la parte baja
 	SIGNAL union: UNSIGNED (7 DOWNTO 0);
 	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
+    SIGNAL enable_registro : STD_LOGIC;
+
 
 	BEGIN
 		ph <= (OTHERS => '0') WHEN inicio = '1' ELSE p(7 DOWNTO 4);
 		pl <= UNSIGNED(y_in) WHEN inicio = '1' ELSE p(3 DOWNTO 0);
 		LSB <= pl(0);
+        enable_registro <= enable XOR inicio;
 
 		--
 		-- Registro que almacena 'x_in'
@@ -100,15 +103,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		--
 		-- Asigno el valor de la salida
 		--
-		-- p_out <= STD_LOGIC_VECTOR(p);
-		PROCESS(reset_n, clock)
-			BEGIN
-				IF (reset_n = '0') THEN
-					p_out <= (OTHERS=>'0');
-				ELSIF RISING_EDGE(clock) THEN
-			    	p_out <= STD_LOGIC_VECTOR(p);
-		    	END IF;
-		END PROCESS;
+		p_out <= STD_LOGIC_VECTOR(p);
 
 		--
 		-- Contador que controla los 4 pasos para multiplicar
@@ -117,7 +112,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 			PORT MAP(
 				reset_n => reset_n,
 				clock => clock,
-				enable => enable,
+				enable => enable_registro,
 				fin_cuenta => done
 			);
 
