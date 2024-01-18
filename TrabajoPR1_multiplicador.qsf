@@ -137,15 +137,15 @@ set_location_assignment PIN_N14 -to max10_clk2_50
 set_location_assignment PIN_N5 -to adc_clock_10
 
 set_global_assignment -name VHDL_FILE TrabajoPR1_multiplicador.vhd
-set_global_assignment -name VHDL_FILE "../utils-display/bynary_to_BCD.vhd"
-set_global_assignment -name VHDL_FILE "../utils-display/binary_to_bcd_digit.vhd"
-set_global_assignment -name VHDL_FILE "../utils-display/binary_to_7seg_display.vhd"
-set_global_assignment -name VHDL_FILE "../utils-display/BCD_7segment.vhd"
-set_global_assignment -name VHDL_FILE registro_enable.vhd
-set_global_assignment -name VHDL_FILE multiplier_top.vhd
-set_global_assignment -name VHDL_FILE multiplier_datapath.vhd
-set_global_assignment -name VHDL_FILE multiplier_control.vhd
-set_global_assignment -name VHDL_FILE contador_k.vhd
+set_global_assignment -name VHDL_FILE "/utils-display/bynary_to_BCD.vhd"
+set_global_assignment -name VHDL_FILE "/utils-display/binary_to_bcd_digit.vhd"
+set_global_assignment -name VHDL_FILE "/utils-display/binary_to_7seg_display.vhd"
+set_global_assignment -name VHDL_FILE "/utils-display/BCD_7segment.vhd"
+set_global_assignment -name VHDL_FILE "/quartus/registro_enable.vhd"
+set_global_assignment -name VHDL_FILE "/quartus/multiplier_top.vhd"
+set_global_assignment -name VHDL_FILE "/quartus/multiplier_datapath.vhd"
+set_global_assignment -name VHDL_FILE "/quartus/multiplier_control.vhd"
+set_global_assignment -name VHDL_FILE "/quartus/contador_k.vhd"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
