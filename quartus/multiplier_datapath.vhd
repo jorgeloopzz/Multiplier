@@ -8,8 +8,8 @@ LIBRARY ieee;
   USE work.ALL;
 
 ENTITY multiplier_datapath IS
-  GENERIC(n : INTEGER:= 4;     -- number of bits of operands
-        	m : INTEGER:= 2);   --  -- log2 number of bits in operands
+  GENERIC(n : INTEGER:= 4;     -- Número de bits
+        	m : INTEGER:= 2);   --  -- log2 número de bits
   PORT   (x_in, y_in : IN  STD_LOGIC_VECTOR(n-1 DOWNTO 0);
           inicio     : IN STD_LOGIC;
           enable     : IN STD_LOGIC;
@@ -51,7 +51,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 
 	SIGNAL m1: UNSIGNED (3 DOWNTO 0);			-- Salida del primer multiplexor que almacenará la parte alta
 	SIGNAL m2: UNSIGNED (3 DOWNTO 0);			-- Salida del segundo multiplexor que almacenará la parte baja
-	SIGNAL union: UNSIGNED (7 DOWNTO 0);
+	SIGNAL union: UNSIGNED (7 DOWNTO 0);		-- Almacena la salida de ambos multiplexores
 	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
     SIGNAL enable_registro : STD_LOGIC;
 
@@ -88,7 +88,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		union <= m1 & m2;
 
 		--
-		-- Registro que almacena m1 & m2
+		-- Registro que almacena la salida de los multiplexores
 		--
 		registro_p: registro_enable
         	GENERIC MAP (n => 8)
