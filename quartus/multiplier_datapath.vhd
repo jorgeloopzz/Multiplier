@@ -8,42 +8,46 @@ LIBRARY ieee;
   USE work.ALL;
 
 ENTITY multiplier_datapath IS
-  GENERIC(n : INTEGER:= 4;     -- Número de bits
-        	m : INTEGER:= 2);   --  -- log2 número de bits
-  PORT   (x_in, y_in : IN  STD_LOGIC_VECTOR(n-1 DOWNTO 0);
-          inicio     : IN STD_LOGIC;
-          enable     : IN STD_LOGIC;
-          done       : OUT STD_LOGIC;
-          p_out      : OUT STD_LOGIC_VECTOR(2*n-1 DOWNTO 0);
-          reset_n    : IN STD_LOGIC;
-          clock      : IN  STD_LOGIC );
+	GENERIC(
+		n : INTEGER:= 4;     -- Número de bits
+        m : INTEGER:= 2);    -- log2 número de bits
+	PORT(
+		clock      : IN  STD_LOGIC;
+        reset_n    : IN STD_LOGIC;
+        enable     : IN STD_LOGIC;
+        inicio     : IN STD_LOGIC;
+		x_in, y_in : IN  STD_LOGIC_VECTOR(n-1 DOWNTO 0);
+        p_out      : OUT STD_LOGIC_VECTOR(2*n-1 DOWNTO 0);
+        done       : OUT STD_LOGIC
+	);
 END multiplier_datapath;
 
 ARCHITECTURE trabajo OF multiplier_datapath IS
 	COMPONENT registro_enable IS
 		GENERIC(n : INTEGER := 8);
 		PORT(
-			rstn : IN STD_LOGIC;
-			clk : IN STD_LOGIC;
-			enable: IN STD_LOGIC;
-			entrada : IN UNSIGNED (n-1 DOWNTO 0);
-			salida : OUT UNSIGNED (n-1 DOWNTO 0)
-			);
+			clk		:	IN STD_LOGIC;
+			rstn	:	IN STD_LOGIC;
+			enable	:	IN STD_LOGIC;
+			entrada	:	IN UNSIGNED (n-1 DOWNTO 0);
+			salida	:	OUT UNSIGNED (n-1 DOWNTO 0)
+		);
 	END COMPONENT;
 
 	COMPONENT contador_k IS
-		  GENERIC(k : INTEGER := 4;
-					m : INTEGER:= 2);
-		  PORT(
-		  reset_n	: IN STD_LOGIC;
-		  clock		: IN STD_LOGIC;
-		  enable		: IN STD_LOGIC;
-		  fin_cuenta: OUT STD_LOGIC );
+		GENERIC(
+			k : INTEGER := 4;
+			m : INTEGER:= 2);
+		PORT(
+			clock		: IN STD_LOGIC;
+			reset_n	: IN STD_LOGIC;
+			enable		: IN STD_LOGIC;
+			fin_cuenta: OUT STD_LOGIC
+		);
 	END COMPONENT;
 	
 	-- SEÑALES
 	SIGNAL X: UNSIGNED (3 DOWNTO 0);
-	SIGNAL Y: UNSIGNED (3 DOWNTO 0);
 	SIGNAL ph: UNSIGNED (3 DOWNTO 0);			-- Inicialmente se inicializa a 0 y después la parte alta de la salida
 	SIGNAL pl: UNSIGNED (3 DOWNTO 0);			-- Inicialmente se inicializa con el valor de "y_in" y después la parte baja de la salida
 	SIGNAL LSB: STD_LOGIC;
@@ -53,7 +57,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	SIGNAL m2: UNSIGNED (3 DOWNTO 0);			-- Salida del segundo multiplexor que almacenará la parte baja
 	SIGNAL union: UNSIGNED (7 DOWNTO 0);		-- Almacena la salida de ambos multiplexores
 	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
-    SIGNAL enable_registro : STD_LOGIC;
+    SIGNAL enable_registro : STD_LOGIC;			-- Se pondrá a 1 cuando para que el contador empiece a contar en el momento preciso
 
 
 	BEGIN
@@ -68,8 +72,8 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		registro_x: registro_enable
 			GENERIC MAP (n => 4)
 			PORT MAP(
-				rstn => reset_n,
 				clk => clock,
+				rstn => reset_n,
 				enable => inicio,
 				entrada => UNSIGNED(x_in),
 				salida => X
@@ -93,8 +97,8 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		registro_p: registro_enable
         	GENERIC MAP (n => 8)
 			PORT MAP(
-				rstn => reset_n,
 				clk => clock,
+				rstn => reset_n,
 				enable => enable,
 				entrada => union,
 				salida => p
@@ -110,8 +114,8 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 		--
 		contador: contador_k
 			PORT MAP(
-				reset_n => reset_n,
 				clock => clock,
+				reset_n => reset_n,
 				enable => enable_registro,
 				fin_cuenta => done
 			);
