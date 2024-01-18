@@ -57,7 +57,7 @@ ARCHITECTURE trabajo OF multiplier_datapath IS
 	SIGNAL m2: UNSIGNED (3 DOWNTO 0);			-- Salida del segundo multiplexor que almacenará la parte baja
 	SIGNAL union: UNSIGNED (7 DOWNTO 0);		-- Almacena la salida de ambos multiplexores
 	SIGNAL p: UNSIGNED (7 DOWNTO 0);			-- Une parte alta y parte baja
-    SIGNAL enable_registro : STD_LOGIC;			-- Se pondrá a 1 cuando para que el contador empiece a contar en el momento preciso
+    SIGNAL enable_registro : STD_LOGIC;			-- Se pondrá a 1 para que el contador empiece a contar en el momento preciso
 
 
 	BEGIN
