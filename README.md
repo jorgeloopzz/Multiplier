@@ -27,7 +27,7 @@ El resultado estará formado por una "parte alta" y una "parte baja" de 4 bits, 
 - En caso contrario, se realiza la misma operación, pero a la parte alta se le suma el valor de X.
 - Este algoritmo hay que hacerlo un total de 4 veces (sin contar la inicialización).
 
-![Alt text](image.png)
+<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/tabla.png">
 
 > Estas operaciones son realizadas por la **ALU**
 
@@ -37,7 +37,7 @@ El resultado estará formado por una "parte alta" y una "parte baja" de 4 bits, 
 El circuito para implementar esas operaciones estará formado por 2 registros que almacenen X y el resultado final, la unidad aritmético lógica y 2 multiplexores que unirán parte alta y baja, formando el siguiente diagrama de bloques.
 
 &nbsp;
-![data-path](https://www.iuma.ulpgc.es/roberto/ed/_images/image19.png)
+<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/data-path.png">
 
 ## 🔢 Contador
 ¿Y cómo controlamos los pasos que tiene que hacer el data-path? El final de la multiplicación se maneja mediante una señal de salida *done* que se pone a 1 cuando acaba. En la [descripición VHDL](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/multiplier_datapath.vhd) hay que añadir un contador no mostrado en la imagen
@@ -45,10 +45,14 @@ El circuito para implementar esas operaciones estará formado por 2 registros qu
 &nbsp;
 
 # 🕹️ Definición de la unidad de control
+&nbsp;
+<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/MEF.png">
 
 &nbsp;
 
 # 🔲 Esquema general del multiplicador
+&nbsp;
+<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/MEF.png">
 
 &nbsp;
 
