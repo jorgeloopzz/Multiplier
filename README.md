@@ -1,12 +1,8 @@
 <!-- HEADERS -->
 <h1 align="center">
- ~
   <b> 
-   <i>
     Multiplicador serie
-   </i>
   </b>
-  ~
 </h1>
 
 1. [🎯 Objetivos](#🎯-objetivos)
@@ -27,3 +23,15 @@
 # 🔲 Esquema general del multiplicador
 
 # 📟 Simulación en Quartus
+
+<div align="center">
+  <a href="https://www.ulpgc.es/">
+    <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/30aniversario/logo_ulpgc_version_vertical_positiva_uso_cotidiano_2_tintas.png" width=200>
+  </a>
+  <a href="https://eite.ulpgc.es/index.php/es/">
+   <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/NuevoLogo/eite_vacron.png" width=200>
+  </a>
+  <a href="https://www.diea.ulpgc.es/">
+    <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/NuevoLogo/dingelectronica_vc_acron_0.png" width=200>
+  </a>
+</div>
