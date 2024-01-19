@@ -9,14 +9,21 @@
   ~
 </h1>
 
-# Objetivos
+1. [🎯 Objetivos](#🎯-objetivos)
+2. [🔢 Proceso de la multiplicación](#🔢-proceso-de-la-multiplicación)
+3. [📓 Definición del data-path](#📓-definición-del-data-path)
+4. [🕹️ Definición de la unidad de control](#🕹️-definición-de-la-unidad-de-control)
+5. [🔲 Esquema general del multiplicador](#🔲-esquema-general-del-multiplicador)
+6. [📟 Simulación en Quartus](#📟-simulación-en-quartus)
 
-# Proceso de la multiplicación
+# 🎯 Objetivos
 
-# Definición del data-path
+# 🔢 Proceso de la multiplicación
 
-# Definición de la unidad de control
+# 📓 Definición del data-path
 
-# Esquema general del multiplicador
+# 🕹️ Definición de la unidad de control
 
-# Simulación en Quartus
+# 🔲 Esquema general del multiplicador
+
+# 📟 Simulación en Quartus
