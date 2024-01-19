@@ -52,7 +52,7 @@ El circuito para implementar esas operaciones estará formado por 2 registros qu
 
 # 🔲 Esquema general del multiplicador
 &nbsp;
-<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/MEF.png">
+<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/esquema.png">
 
 &nbsp;
 
