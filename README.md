@@ -38,7 +38,7 @@ El circuito para implementar esas operaciones estará formado por 2 registros qu
 <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/data-path.png">
 
 ## 🔢 Contador
-¿Y cómo controlamos los pasos que tiene que hacer el data-path? El final de la multiplicación se maneja mediante una señal de salida *done* que se pone a 1 cuando acaba. En la [descripición VHDL](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/multiplier_datapath.vhd) hay que añadir un [contador](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/contador_k.vhd) no mostrado en la imagen. Este contador ya viene definido para que cuenta hasta 4, por lo que conectamos su RCO, *fin_cuenta*, a la señal de salida para que se ponga a 1 en el momento necesario.
+¿Y cómo controlamos los pasos que tiene que hacer el data-path? El final de la multiplicación se maneja mediante una señal de salida *done* que se pone a 1 cuando acaba. En la [descripición VHDL](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/multiplier_datapath.vhd) hay que añadir un [contador](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/contador_k.vhd) no mostrado en la imagen. Este contador ya viene definido para que cuenta hasta 4, por lo que conectamos su RCO, *fin_cuenta*, a la señal de salida para que se ponga a 1 cuando termine de contar.
 
 &nbsp;
 
