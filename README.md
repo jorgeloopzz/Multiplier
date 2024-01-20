@@ -66,7 +66,7 @@ Primero crearemos un proyecto, seleccionando las siguientes [opciones](https://w
 1. Crear un nuevo fichero de formas de onda con el University Wafeform VWF (Waveform.vwf).
 2. Introducir todos los pines del circuito en el diagrama de formas de onda.
 3. Establecer el tiempo de simulación en 500 ns.
-4. Seleccionar para x_in, y_in y p_out el radix como “Unsigned Decimal” y darles un valor arbitrario para multiplicarlos.
+4. Seleccionar para *x_in*, *y_in* y *p_out* el radix como “Unsigned Decimal” y darles un valor arbitrario para multiplicarlos.
 5. Establecer una señal de reloj de 20 MHz y el resto de las señales tal como aparece en la imagen siguiente:
 
 > Imagen
@@ -75,18 +75,28 @@ Primero crearemos un proyecto, seleccionando las siguientes [opciones](https://w
 
 > Imagen
 
+7. También se pueden realizar simulaciones en EDAPlayground usando el [testbench](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/testbench.vhd).
+
 > Este apartado se indica de forma distinta en la [página web](https://www.iuma.ulpgc.es/roberto/ed/Trabajos_Asignatura/T1_multiplicador/trabajo-multiplicador.html) del trabajo, pero así evitamos manejar las señales **inicio** y **enable** dándole los valores manualmente, sino que será la máquina de control la que se ocupe de ellas, y de paso comprobamos su correcto funcionamiento.
 
 &nbsp;
 
+# 🛠️ Implementación en la placa
+Añadiremos la carpeta utils-display al proyecto, que contiene los archivos para representar los datos en BCD. Se debe declarar a ***TrabajoPR1_multiplicador.vhd*** como top-level entity, que define los leds que deben encenderse en la placa. Luego haremos la asignación de pines importando el fichero [TrabajoPR1_multiplicador.qsf](https://github.com/jorgeloopzz/Multipliier/blob/main/TrabajoPR1_multiplicador.qsf), es importante que se encuentre dentro de la carpeta de trabajo. La conexión de los pines se muestra en la siguiente imagen:
+
+&nbsp;
+<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/placa.jpeg">
+
+&nbsp;
+
 <div align="center">
-  <a href="https://www.ulpgc.es/">
-    <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/30aniversario/logo_ulpgc_version_vertical_positiva_uso_cotidiano_2_tintas.png" width=200>
-  </a>
   <a href="https://eite.ulpgc.es/index.php/es/">
-   <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/NuevoLogo/eite_vacron.png" width=200>
+   <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/NuevoLogo/eite_hc.png" width=300>
   </a>
   <a href="https://www.diea.ulpgc.es/">
-    <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/NuevoLogo/dingelectronica_vc_acron_0.png" width=200>
+    <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/NuevoLogo/dingelectronica_hc.png" width=300>
+  </a>
+  <a href="https://www.ulpgc.es/">
+    <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/Logo%2025%20Aniversario/logo_ulpgc_horizontal_acronimo_2t.png" width=200>
   </a>
 </div>
