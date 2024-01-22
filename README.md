@@ -70,7 +70,7 @@ El circuito multiplicador estará constituido por la unidad de control y por la 
 
 # 📟 Simulación en Quartus
 
-Primero crearemos un proyecto, seleccionando las siguientes [opciones](https://www.iuma.ulpgc.es/roberto/ed/practicas/Quartus_tutorial.html#abrir-quartusii-y-crear-un-proyecto) que he usado en las prácticas de la asignatura. Luego se añade la carpeta quartus al proyecto y se debe declarar a **_multiplier_top.vhd_** como top-level entity. La simulación se hará con el siguiente procedimiento:
+Primero crearemos un proyecto, seleccionando las siguientes [opciones](https://www.iuma.ulpgc.es/roberto/ed/practicas/Quartus_tutorial.html#abrir-quartusii-y-crear-un-proyecto) que he usado en las prácticas de la asignatura. Luego se añade la carpeta quartus al proyecto y se debe declarar a `multiplier_top.vhd` como top-level entity. La simulación se hará con el siguiente procedimiento:
 
 1. Crear un nuevo fichero de formas de onda con el University Wafeform VWF (Waveform.vwf).
 2. Introducir todos los pines del circuito en el diagrama de formas de onda.
@@ -92,12 +92,16 @@ Primero crearemos un proyecto, seleccionando las siguientes [opciones](https://w
 
 # 🛠️ Implementación en la placa
 
-Añadiremos la carpeta utils-display al proyecto, que contiene los archivos para representar los datos en BCD. Se debe declarar a **_TrabajoPR1_multiplicador.vhd_** como top-level entity, que define los leds que deben encenderse en la placa. Luego haremos la asignación de pines importando el fichero [TrabajoPR1_multiplicador.qsf](https://github.com/jorgeloopzz/Multipliier/blob/main/TrabajoPR1_multiplicador.qsf), es importante que se encuentre dentro de la carpeta de trabajo. La conexión de los pines se muestra en la siguiente imagen:
+Añadiremos la carpeta utils-display al proyecto, que contiene los archivos para representar los datos en BCD. Declaramos `TrabajoPR1_multiplicador.vhd` como top-level entity, que define los leds que deben encenderse en la placa. Luego haremos la asignación de pines importando el fichero `TrabajoPR1_multiplicador.qsf`, es importante que se encuentre dentro de la carpeta de trabajo. La conexión de los pines se muestra en la siguiente imagen:
 
 &nbsp;
 <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/placa.jpeg">
 
 &nbsp;
+
+|                                           4 X 2                                            |                                           8 X 2                                            |
+| :----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+| <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/4x2.jpeg"> | <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/8x2.jpeg"> |
 
 <div align="center">
   <a href="https://eite.ulpgc.es/index.php/es/">
