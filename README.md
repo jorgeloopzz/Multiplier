@@ -11,7 +11,6 @@
   - [🔢 Contador](https://github.com/jorgeloopzz/Multipliier#-contador)
 - [🕹️ Definición de la unidad de control](https://github.com/jorgeloopzz/Multipliier#%EF%B8%8F-definici%C3%B3n-de-la-unidad-de-control)
 - [🔲 Esquema general del multiplicador](https://github.com/jorgeloopzz/Multipliier#-esquema-general-del-multiplicador)
-- [📟 Simulación en Quartus](https://github.com/jorgeloopzz/Multipliier#-simulaci%C3%B3n-en-quartus)
 - [🛠️ Implementación en la placa](https://github.com/jorgeloopzz/Multipliier#%EF%B8%8F-implementaci%C3%B3n-en-la-placa)
 
 &nbsp;
@@ -65,28 +64,6 @@ El circuito multiplicador estará constituido por la unidad de control y por la 
 
 &nbsp;
 <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/esquema.png">
-
-&nbsp;
-
-# 📟 Simulación en Quartus
-
-Primero crearemos un proyecto, seleccionando las siguientes [opciones](https://www.iuma.ulpgc.es/roberto/ed/practicas/Quartus_tutorial.html#abrir-quartusii-y-crear-un-proyecto) que he usado en las prácticas de la asignatura. Luego se añade la carpeta quartus al proyecto y se debe declarar a `multiplier_top.vhd` como top-level entity. La simulación se hará con el siguiente procedimiento:
-
-1. Crear un nuevo fichero de formas de onda con el University Wafeform VWF (Waveform.vwf).
-2. Introducir todos los pines del circuito en el diagrama de formas de onda.
-3. Establecer el tiempo de simulación en 500 ns.
-4. Seleccionar para _x_in_, _y_in_ y _p_out_ el radix como “Unsigned Decimal” y darles un valor arbitrario para multiplicarlos.
-5. Establecer una señal de reloj de 20 MHz y el resto de las señales tal como aparece en la imagen siguiente:
-
-> Imagen
-
-6. Realizar la simulación y comprobar que el resultado es el siguiente, donde se observa que al multiplicar 9x9 el resultado es 81.
-
-> Imagen
-
-7. También se pueden realizar simulaciones en EDAPlayground usando el [testbench](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/testbench.vhd).
-
-> Este apartado se indica de forma distinta en la [página web](https://www.iuma.ulpgc.es/roberto/ed/Trabajos_Asignatura/T1_multiplicador/trabajo-multiplicador.html) del trabajo, pero así evitamos manejar las señales **inicio** y **enable** dándole los valores manualmente, sino que será la máquina de control la que se ocupe de ellas, y de paso comprobamos su correcto funcionamiento.
 
 &nbsp;
 
