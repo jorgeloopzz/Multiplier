@@ -1,75 +1,84 @@
 <!-- HEADERS -->
 <h1 align="center">
   <b> 
-    Multiplicador serie
+    Serial Multiplier
   </b>
 </h1>
 
-- [🎯 Objetivos](https://github.com/jorgeloopzz/Multipliier#-objetivos)
-- [✖️ Proceso de la multiplicación](https://github.com/jorgeloopzz/Multipliier#%EF%B8%8F-proceso-de-la-multiplicaci%C3%B3n)
-- [📓 Definición del data-path](https://github.com/jorgeloopzz/Multipliier#-definici%C3%B3n-del-data-path)
-  - [🔢 Contador](https://github.com/jorgeloopzz/Multipliier#-contador)
-- [🕹️ Definición de la unidad de control](https://github.com/jorgeloopzz/Multipliier#%EF%B8%8F-definici%C3%B3n-de-la-unidad-de-control)
-- [🔲 Esquema general del multiplicador](https://github.com/jorgeloopzz/Multipliier#-esquema-general-del-multiplicador)
-- [🛠️ Implementación en la placa](https://github.com/jorgeloopzz/Multipliier#%EF%B8%8F-implementaci%C3%B3n-en-la-placa)
+<h1>
+  <a href="https://github.com/jorgeloopzz/Multipliier/blob/main/README.es.md">
+    🇪🇸
+  </a>
+  <a href="https://github.com/jorgeloopzz/Multipliier/blob/main/README.md">
+    🇬🇧
+  </a>
+</h1>
+
+- [🎯 Objectives](https://github.com/jorgeloopzz/Multipliier#-objectives)
+- [✖️ Multiplication Process](https://github.com/jorgeloopzz/Multipliier#️-multiplication-process)
+- [📓 Definition of the Data-Path](https://github.com/jorgeloopzz/Multipliier#-definition-of-the-data-path)
+  - [🔢 Counter](https://github.com/jorgeloopzz/Multipliier#-counter)
+- [🕹️ Definition of the Control Unit](https://github.com/jorgeloopzz/Multipliier#️-definition-of-the-control-unit)
+- [🔲 General Scheme of the Multiplier](https://github.com/jorgeloopzz/Multipliier#-general-scheme-of-the-multiplier)
+- [🛠️ Implementation on the Board](https://github.com/jorgeloopzz/Multipliier#️-implementation-on-the-board)
 
 &nbsp;
 
-# 🎯 Objetivos
+# 🎯 Objectives
 
-El objetivo general de este proyecto es la realización de un multiplicador serie e implementarlo en la tarjeta DE10-Lite. El multiplicador tomará dos datos de 4 bits (X e Y) y los multiplicará.
+The general objective of this project is to create a serial multiplier and implement it on the DE10-Lite board. The multiplier will take two 4-bit data (X and Y) and multiply them.
 
 &nbsp;
 
-# ✖️ Proceso de la multiplicación
+# ✖️ Multiplication Process
 
-El resultado estará formado por una "parte alta" y una "parte baja" de 4 bits, la unión de ambas partes será el número final. Para llegar a dicho valor, se emplea el siguiente algoritmo:
+The result will consist of a "high part" and a "low part" of 4 bits each, and the union of both parts will be the final number. To obtain this value, the following algorithm is used:
 
-- Al iniciar la operación, a la parte alta se le asigna 0 y a la parte baja el valor de Y.
-- Si el bit menos significativo de la parte baja es 0, se realiza un desplazamiento a la derecha de la parte alta añadiendo un 0 al principio, quedando al final un número de 5 bits.
-- En caso contrario, se realiza la misma operación, pero a la parte alta se le suma el valor de X.
-- Este algoritmo hay que hacerlo un total de 4 veces (sin contar la inicialización) y es realizado por la **ALU**.
+- At the start of the operation, the high part is assigned 0, and the low part is assigned the value of Y.
+- If the least significant bit of the low part is 0, a right shift of the high part is performed by adding a 0 at the beginning, resulting in a 5-bit number.
+- Otherwise, the same operation is performed, but the value of X is added to the high part.
+- This algorithm must be repeated a total of 4 times (excluding initialization) and is performed by the **ALU**.
 
 <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/tabla.png">
 
 &nbsp;
 
-# 📓 Definición del data-path
+# 📓 Definition of the Data-Path
 
-El circuito para implementar esas operaciones estará formado por 2 registros que almacenen X y el resultado final, la unidad aritmético lógica y 2 multiplexores que unirán parte alta y baja, formando el siguiente diagrama de bloques:
+The circuit to implement these operations will consist of 2 registers that store X and the final result, the arithmetic logic unit, and 2 multiplexers that will join the high and low parts, forming the following block diagram:
 
 &nbsp;
 <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/data-path.png">
 
-## 🔢 Contador
+## 🔢 Counter
 
-¿Y cómo controlamos los pasos que tiene que hacer el data-path? El final de la multiplicación se maneja mediante una señal de salida _done_ que se pone a 1 cuando acaba. En la [descripición VHDL](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/multiplier_datapath.vhd) hay que añadir un [contador](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/contador_k.vhd) no mostrado en la imagen. Este contador ya viene definido para que cuenta hasta 4, por lo que conectamos su RCO, _fin_cuenta_, a la señal de salida para que se ponga a 1 cuando termine de contar.
+And how do we control the steps that the data-path has to take? The end of the multiplication is managed by an output signal _done_ that is set to 1 when it finishes. In the [VHDL description](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/multiplier_datapath.vhd), you need to add a [counter](https://github.com/jorgeloopzz/Multipliier/blob/main/quartus/contador_k.vhd) not shown in the image. This counter is already defined to count up to 4, so you connect its RCO, _fin_cuenta_, to the output signal to set it to 1 when it finishes counting.
 
 &nbsp;
 
-# 🕹️ Definición de la unidad de control
+# 🕹️ Definition of the Control Unit
 
-La unidad de control del multiplicador se realizará mediante una MEF que siga el siguiente diagrama de estados:
+The control unit of the multiplier will be implemented through a FSM following the following state diagram:
 
 &nbsp;
 <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/MEF.png">
 
-Esta genera las señales por las que se inicia el producto (**inicio**) y se empieza el proceso de multiplicación (**enable**). El contador mencionado antes, empieza a contar en el estado de **mult**, por lo tanto, su _enable_ debe estar a 1 cuando cuando **inicio** y **enable** tienen los valores correspondientes.
+It generates the signals to start the product (**start**) and initiate the multiplication process (**enable**). The aforementioned counter starts counting in the **mult** state, so its _enable_ must be set to 1 when **start** and **enable** have the corresponding values.
 
 &nbsp;
 
-# 🔲 Esquema general del multiplicador
+# 🔲 General Scheme of the Multiplier
 
-El circuito multiplicador estará constituido por la unidad de control y por la unidad de data-path, según se muestra en la siguiente imagen:
+The multiplier circuit will consist of the control unit and the data-path unit, as shown in the following image:
 
 &nbsp;
 <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/esquema.png">
 
 &nbsp;
 
-# 🛠️ Implementación en la placa
+# 🛠️ Implementation on the Board
 
-Añadiremos la carpeta utils-display al proyecto, que contiene los archivos para representar los datos en BCD. Declaramos `TrabajoPR1_multiplicador.vhd` como top-level entity, que define los leds que deben encenderse en la placa. Luego haremos la asignación de pines importando el fichero `TrabajoPR1_multiplicador.qsf`, es importante que se encuentre dentro de la carpeta de trabajo. La conexión de los pines se muestra en la siguiente imagen:
+We will add the utils-display folder to the project, which contains the files to represent the data in BCD. Declare `TrabajoPR1_multiplicador.vhd` as the top-level entity, defining the LEDs that should light up on the board. Then, assign the pins by importing the file `TrabajoPR1_multiplicador.qsf`, and it is important that it is located within the working folder. The pin connection is shown in the following image:
 
 &nbsp;
 <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/placa.jpeg">
