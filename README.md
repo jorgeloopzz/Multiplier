@@ -5,14 +5,14 @@
   </b>
 </h1>
 
-<h1>
+<h3>
   <a href="https://github.com/jorgeloopzz/Multipliier/blob/main/README.es.md">
     🇪🇸
   </a>
   <a href="https://github.com/jorgeloopzz/Multipliier/blob/main/README.md">
     🇬🇧
   </a>
-</h1>
+</h3>
 
 - [🎯 Objectives](https://github.com/jorgeloopzz/Multipliier#-objectives)
 - [✖️ Multiplication Process](https://github.com/jorgeloopzz/Multipliier#️-multiplication-process)
