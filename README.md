@@ -14,13 +14,13 @@
   </a>
 </h3>
 
-- [🎯 Objectives](https://github.com/jorgeloopzz/Multipliier#-objectives)
-- [✖️ Multiplication Process](https://github.com/jorgeloopzz/Multipliier#️-multiplication-process)
-- [📓 Definition of the Data-Path](https://github.com/jorgeloopzz/Multipliier#-definition-of-the-data-path)
-  - [🔢 Counter](https://github.com/jorgeloopzz/Multipliier#-counter)
-- [🕹️ Definition of the Control Unit](https://github.com/jorgeloopzz/Multipliier#️-definition-of-the-control-unit)
-- [🔲 General Scheme of the Multiplier](https://github.com/jorgeloopzz/Multipliier#-general-scheme-of-the-multiplier)
-- [🛠️ Implementation on the Board](https://github.com/jorgeloopzz/Multipliier#️-implementation-on-the-board)
+- [🎯 Objectives](#-objectives)
+- [✖️ Multiplication Process](#️-multiplication-process)
+- [📓 Definition of the Data-Path](#-definition-of-the-data-path)
+  - [🔢 Counter](#-counter)
+- [🕹️ Definition of the Control Unit](#️-definition-of-the-control-unit)
+- [🔲 General Scheme of the Multiplier](#-general-scheme-of-the-multiplier)
+- [🛠️ Implementation on the Board](#️-implementation-on-the-board)
 
 &nbsp;
 
