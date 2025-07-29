@@ -39,7 +39,9 @@ The result will consist of a "high part" and a "low part" of 4 bits each, and th
 - Otherwise, the same operation is performed, but the value of X is added to the high part.
 - This algorithm must be repeated a total of 4 times (excluding initialization) and is performed by the **ALU**.
 
-<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/tabla.png">
+<div align="center">
+  <img align="center" src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/tabla.png">
+</div>
 
 &nbsp;
 
@@ -47,8 +49,9 @@ The result will consist of a "high part" and a "low part" of 4 bits each, and th
 
 The circuit to implement these operations will consist of 2 registers that store X and the final result, the arithmetic logic unit, and 2 multiplexers that will join the high and low parts, forming the following block diagram:
 
-&nbsp;
-<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/data-path.png">
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/data-path.png">
+</div>
 
 ## 🔢 Counter
 
@@ -60,8 +63,9 @@ And how do we control the steps that the data-path has to take? The end of the m
 
 The control unit of the multiplier will be implemented through a FSM following the following state diagram:
 
-&nbsp;
-<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/MEF.png">
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/MEF.png">
+</div>
 
 It generates the signals to start the product (**start**) and initiate the multiplication process (**enable**). The aforementioned counter starts counting in the **mult** state, so its _enable_ must be set to 1 when **start** and **enable** have the corresponding values.
 
@@ -71,8 +75,9 @@ It generates the signals to start the product (**start**) and initiate the multi
 
 The multiplier circuit will consist of the control unit and the data-path unit, as shown in the following image:
 
-&nbsp;
-<img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/esquema.png">
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jorgeloopzz/Multipliier/main/assets/esquema.png">
+</div>
 
 &nbsp;
 
