@@ -101,7 +101,4 @@ We will add the utils-display folder to the project, which contains the files to
   <a href="https://www.diea.ulpgc.es/">
     <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/NuevoLogo/dingelectronica_hc.png" width=300>
   </a>
-  <a href="https://www.ulpgc.es/">
-    <img src="https://www.ulpgc.es/sites/default/files/ArchivosULPGC/identidad-corporativa/Logo%2025%20Aniversario/logo_ulpgc_horizontal_acronimo_2t.png" width=200>
-  </a>
 </div>
