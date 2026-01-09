@@ -14,16 +14,6 @@
   </a>
 </h3>
 
-- [🎯 Objectives](#-objectives)
-- [✖️ Multiplication Process](#️-multiplication-process)
-- [📓 Definition of the Data-Path](#-definition-of-the-data-path)
-  - [🔢 Counter](#-counter)
-- [🕹️ Definition of the Control Unit](#️-definition-of-the-control-unit)
-- [🔲 General Scheme of the Multiplier](#-general-scheme-of-the-multiplier)
-- [🛠️ Implementation on the Board](#️-implementation-on-the-board)
-
-&nbsp;
-
 # 🎯 Objectives
 
 The general objective of this project is to create a serial multiplier and implement it on the DE10-Lite board. The multiplier will take two 4-bit data (X and Y) and multiply them.

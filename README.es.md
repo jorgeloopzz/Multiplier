@@ -5,16 +5,6 @@
   </b>
 </h1>
 
-- [🎯 Objetivos](https://github.com/jorgeloopzz/Multipliier#-objetivos)
-- [✖️ Proceso de la multiplicación](https://github.com/jorgeloopzz/Multipliier#%EF%B8%8F-proceso-de-la-multiplicaci%C3%B3n)
-- [📓 Definición del data-path](https://github.com/jorgeloopzz/Multipliier#-definici%C3%B3n-del-data-path)
-  - [🔢 Contador](https://github.com/jorgeloopzz/Multipliier#-contador)
-- [🕹️ Definición de la unidad de control](https://github.com/jorgeloopzz/Multipliier#%EF%B8%8F-definici%C3%B3n-de-la-unidad-de-control)
-- [🔲 Esquema general del multiplicador](https://github.com/jorgeloopzz/Multipliier#-esquema-general-del-multiplicador)
-- [🛠️ Implementación en la placa](https://github.com/jorgeloopzz/Multipliier#%EF%B8%8F-implementaci%C3%B3n-en-la-placa)
-
-&nbsp;
-
 # 🎯 Objetivos
 
 El objetivo general de este proyecto es la realización de un multiplicador serie e implementarlo en la tarjeta DE10-Lite. El multiplicador tomará dos datos de 4 bits (X e Y) y los multiplicará.
